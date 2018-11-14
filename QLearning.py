@@ -33,6 +33,8 @@ class QLearning:
             epsilon = min_epsilon + (max_epsilon - min_epsilon)*np.exp(-decay_rate*episode)
         print('Training Complete!')
         print(self.qTable)
+        self.env.reset()
+        return self.qTable
 
     def execute(self, tests, show_renders = False):
         self.env.reset()
@@ -58,18 +60,23 @@ class QLearning:
     def ai_step(self):
         action = np.argmax(self.qTable[self.state, :])
         new_state, reward, done, info = self.env.step(action)
+        self.rewards.append(reward)
         self.total_rewards += reward
-        if done:
-            self.rewards.append(self.total_rewards)
-            break
         self.state = new_state
         return {
-            'action': action,
+            'action': int(action),
             'state': self.env.render(),
             'rewards': self.rewards,
-            'qTable': self.qTable,
+            'qTable': self.qTable.tolist(),
             'done': done
         }
+    def reset(self):
+        self.qTable = np.zeros((self.env.observation_space.n, self.env.action_space.n))
+        self.state = 20
+        self.score = 0
+        self.total_rewards = 0
+        self.rewards = []
+        self.env.reset()
 
     def close(self):
         self.env.close()

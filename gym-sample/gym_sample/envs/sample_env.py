@@ -100,4 +100,4 @@ class SampleEnv(gym.Env):
       return 20
     
   def render(self, mode='human', close=False):
-      return json.dumps(self.state)
+      return self.state
