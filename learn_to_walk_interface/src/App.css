@@ -1,32 +1,93 @@
+body {
+  background-color: #636e72;
+}
+h1 {
+  color: #dfe6e9;
+}
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+.board {
+  display: flex;
+  width: 508px;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #2d3436;
+  flex-direction: row;
+}
+.cell, .char, .wall, .goal, .doom {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: #dfe6e9;
+  margin: 0.5px;
+}
+
+.char, .wall, .goal, .doom {
+  background-size: cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+}
+
+.char {
+  background-image: url('./char.png');
+}
+.wall {
+  background-image: url('./wall.png');
+}
+.goal {
+  background-image: url('./goal.png');
+}
+.doom {
+  background-image: url('./doom.png');
+}
+
+.buttonRow {
+  display: flex;
+  width: 506px;
+  padding: 0px;
+  padding-top: 10px;
+  justify-content: space-between;
+}
+
+.button {
+  height: 50px;
+  width: 49%;
+  border-radius: 0px;
+  border-width: 0px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.train {
+  background-color: #0984e3;
+  color: #dfe6e9;
+}
+
+.step {
+  background-color: #ffeaa7;
+}
+
+.qTable {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.endGameMsg {
+  position: absolute;
+  top: 30%;
+  color: #dfe6e9;
+  background-color: #00cec9;
+  width: 600px;
+  height: 80px;
+  line-height: 0px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 30px;
+  border-color: #81ecec;
+  border-width: 1;
 }
